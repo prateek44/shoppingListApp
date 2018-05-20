@@ -15,6 +15,7 @@
     console.log("number of items in list",$scope.len);
     $scope.addToList=function()
     {
+
       console.log("number of watchers #",$scope.$$watchersCount);
       var newItemObject={
         name:$scope.newItem,
@@ -25,8 +26,14 @@
       shoppingList.push(newItemObject);
       console.log("recently added...",$scope.shoppingListItems[$scope.len-1].name);
       console.log("item successfully added...")
+      $scope.len++;
+    //  $scope.$digest();
 
     };
+    $scope.$watch(function()
+  {
+    console.log("digest loop fired...");
+  });
     console.log("number of watchers #",$scope.$$watchersCount);
   }
 })();
